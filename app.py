@@ -27,7 +27,7 @@ def load_model(model_path):
 st.write("""
 # Dog Breed Classification by Gonzales and Taller"""
 )
-file=st.file_uploader("Choose an image of dog on your computer",type=["jpg","png"])
+file=st.file_uploader("Choose an image of a dog on your computer",type=["jpg","png"])
 
 
 
