@@ -25,7 +25,7 @@ def load_model(model_path):
     return model
 
 st.write("""
-# Dog Classification by Taller and Gonzales"""
+# Dog Breed Classification by Gonzales and Taller"""
 )
 file=st.file_uploader("Choose dog photo from computer",type=["jpg","png"])
 
