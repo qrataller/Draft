@@ -14,11 +14,7 @@ import tensorflow_hub as hub
 
 @st.cache_data
 def load_model(model_path):
-    """
-    Loads a saved model from a specified path.
-    """
     print(f"Loading saved model from: {model_path}")
-    # Register the custom objects before loading the model
     custom_objects = {"KerasLayer": hub.KerasLayer}
     model = tf.keras.models.load_model(model_path, custom_objects=custom_objects)
     print("Model loaded successfully.")
@@ -29,29 +25,20 @@ st.write("""
 )
 file=st.file_uploader("Choose dog photo from computer",type=["jpg","png"])
 
-
-
 def import_and_predict(image_data, model):
     size = (128, 128)
     
-    # Resize the image to the expected input shape of the model
     image = ImageOps.fit(image_data, size, Image.LANCZOS)
     img = np.asarray(image)
     img = cv2.resize(img, (128, 128), interpolation=cv2.INTER_NEAREST)
     
-    # Convert the image to grayscale if necessary
     if img.ndim == 3 and img.shape[2] == 3:
         img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-
-    # Reshape the image to add a channel dimension
     img_reshape = img.reshape((1,) + img.shape + (1,))
-
-    # Make predictions using the Keras model
     prediction = model.predict(img_reshape)
     return prediction
 
 
-# Load the model
 model_path = "models_dogbreed.h5"
 model = load_model(model_path)
 
@@ -97,5 +84,6 @@ else:
        'vizsla', 'walker_hound', 'weimaraner', 'welsh_springer_spaniel',
        'west_highland_white_terrier', 'whippet',
        'wire-haired_fox_terrier', 'yorkshire_terrier']
+    
     string="OUTPUT : "+ class_names[np.argmax(prediction)]
     st.success(string)
