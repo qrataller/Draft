@@ -1,6 +1,0 @@
-tensorflow
-streamlit
-pillow
-numpy
-tensorflow_hub
-pandas
