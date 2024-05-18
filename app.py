@@ -51,6 +51,10 @@ def import_and_predict(image_data, model):
     return prediction
 
 
+# Load the model
+model_path = "models_dogbreed.h5"
+model = load_model(model_path)
+
 if file is None:
     st.text("Please upload an image file")
 else:
