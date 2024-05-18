@@ -12,7 +12,7 @@ from PIL import Image, ImageOps
 import numpy as np
 import tensorflow_hub as hub
 
-model_path = "dog1.h5"
+model_path = "models_dogbreed.h5"
 
 @st.cache_resource
 def load_model(model_path):
