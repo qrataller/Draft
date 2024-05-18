@@ -56,7 +56,9 @@ if file is None:
 else:
     image=Image.open(file)
     st.image(image,use_column_width=True)
+    st.image(image, caption="Uploaded image file", use_column_width=True)
     prediction=import_and_predict(image,model)
+    st.write("")
     class_names=['affenpinscher', 'afghan_hound', 'african_hunting_dog', 'airedale',
        'american_staffordshire_terrier', 'appenzeller',
        'australian_terrier', 'basenji', 'basset', 'beagle',
@@ -93,5 +95,5 @@ else:
        'vizsla', 'walker_hound', 'weimaraner', 'welsh_springer_spaniel',
        'west_highland_white_terrier', 'whippet',
        'wire-haired_fox_terrier', 'yorkshire_terrier']
-    string="OUTPUT : "+ class_names[np.argmax(prediction)]
+    string="Output: "+ class_names[np.argmax(prediction)]
     st.success(string)
